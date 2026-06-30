@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room Details</title>
+    <style>
+        body{
+            font-family: Arial;
+            background:#f4f4f4;
+            margin:0;
+            padding:30px;
+        }
+
+        .header{
+            width:95%;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:30px;
+        }
+
+        h1{
+            margin:0;
+        }
+
+        .logout-btn{
+            background:#ef4444;
+            color:white;
+            border:none;
+            padding:12px 20px;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        .logout-btn:hover{
+            background:#dc2626;
+        }
+
+        .table-container{
+            width:95%;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:12px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th,td{
+            padding:14px;
+            border-bottom:1px solid #ddd;
+            text-align:center;
+        }
+
+        th{
+            background:#2563eb;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Student Room Details</h1>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Room No</th>
+                <th>Floor</th>
+                <th>Type</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="studentTable"></tbody>
+    </table>
+</div>
+
+<script src="room-details.js"></script>
+
+<script>
+function logout(){
+    localStorage.removeItem("currentUser");
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

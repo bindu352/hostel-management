@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #111;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  margin: 15px 0;
+  text-decoration: none;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+.box {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 0 10px gray;
+  text-align: center;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px;
+  width: 100%;
+  background: black;
+  color: white;
+  border: none;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 0 10px gray;
+}

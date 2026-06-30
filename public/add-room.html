@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Room</title>
+</head>
+<body>
+
+    <h2>Add Room</h2>
+
+    <form id="roomForm">
+
+        <input type="text" id="roomNumber" placeholder="Room Number" required>
+        <br><br>
+
+        <input type="number" id="floorNumber" placeholder="Floor Number" required>
+        <br><br>
+
+        <input type="text" id="roomType" placeholder="Room Type" required>
+        <br><br>
+
+        <input type="number" id="capacity" placeholder="Capacity" required>
+        <br><br>
+
+        <select id="status">
+            <option value="Available">Available</option>
+            <option value="Occupied">Occupied</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Add Room</button>
+
+    </form>
+
+    <p id="message"></p>
+
+<script>
+
+document.getElementById("roomForm").addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const roomData = {
+        roomNumber: document.getElementById("roomNumber").value,
+        floorNumber: document.getElementById("floorNumber").value,
+        roomType: document.getElementById("roomType").value,
+        capacity: document.getElementById("capacity").value,
+        status: document.getElementById("status").value
+    };
+
+    const response = await fetch("/rooms", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(roomData)
+    });
+
+    const data = await response.json();
+
+    document.getElementById("message").innerText = data.message;
+
+    document.getElementById("roomForm").reset();
+
+});
+
+</script>
+
+</body>
+</html>

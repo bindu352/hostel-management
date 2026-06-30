@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HostelHub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    radial-gradient(circle at top left,#38bdf855 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#2563eb55 0%,transparent 30%),
+    linear-gradient(135deg,#020617,#081229,#0f172a,#1d4ed8);
+    color:white;
+    overflow-x:hidden;
+}
+
+.container{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px 0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:30px;
+    font-size:15px;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+.hero{
+    height:85vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:72px;
+    font-weight:300;
+    letter-spacing:8px;
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:20px;
+    color:#cbd5e1;
+    max-width:850px;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.btn-box{
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:14px 35px;
+    border:none;
+    border-radius:30px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.login-btn{
+    background:linear-gradient(90deg,#3b82f6,#2563eb);
+    box-shadow:0 0 30px rgba(59,130,246,0.45);
+}
+
+.signup-btn{
+    border:1px solid rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-bottom:60px;
+}
+
+.card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    backdrop-filter:blur(20px);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(59,130,246,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    color:#38bdf8;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    color:#94a3b8;
+}
+
+@media(max-width:900px){
+    .hero h1{
+        font-size:48px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    nav{
+        display:none;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+    <div class="logo">HostelHub</div>
+
+    <nav>
+        <a href="#">HOME</a>
+        <a href="#">ABOUT</a>
+        <a href="login.html">LOGIN</a>
+        <a href="signup.html">SIGN UP</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>HOSTELHUB</h1>
+
+    <p>
+        Smart Hostel Management Platform for managing students,
+        rooms, complaints, fees, mess and events with real-time access.
+    </p>
+
+    <div class="btn-box">
+        <a href="login.html" class="btn login-btn">Login</a>
+        <a href="signup.html" class="btn signup-btn">Sign Up</a>
+    </div>
+</section>
+
+<section class="features">
+
+    <div class="card">
+        <h3>Student Management</h3>
+        <p>Manage all student details and records efficiently.</p>
+    </div>
+
+    <div class="card">
+        <h3>Room Allocation</h3>
+        <p>Allocate rooms and manage occupancy in real time.</p>
+    </div>
+
+    <div class="card">
+        <h3>Complaints</h3>
+        <p>Track and resolve complaints quickly and efficiently.</p>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 HostelHub | All Rights Reserved
+</footer>
+
+</div>
+
+</body>
+</html>

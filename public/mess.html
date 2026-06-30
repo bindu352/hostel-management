@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mess Menu</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    display:flex;
+}
+
+/* Sidebar */
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:#1e293b;
+    padding:30px 20px;
+    position:fixed;
+    left:0;
+    top:0;
+}
+
+.sidebar h2{
+    color:#38bdf8;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:12px;
+}
+
+.sidebar a:hover{
+    background:#38bdf8;
+}
+
+/* Main Content */
+.main-content{
+    margin-left:260px;
+    width:100%;
+    padding:20px;
+}
+
+.header{
+    position:relative;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+h2{
+    margin:0;
+}
+
+form{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    background:#2563eb;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.logout-btn{
+    position:absolute;
+    right:0;
+    top:0;
+    width:120px;
+    padding:12px;
+    background:#ef4444;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th, td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>🏠 HostelHub</h2>
+
+    <a href="dashboard.html">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="rooms.html">Rooms</a>
+    <a href="allocation.html">Allocation</a>
+    <a href="fees.html">Fees</a>
+    <a href="mess.html">Mess</a>
+    <a href="complaints.html">Complaints</a>
+    <a href="events.html">Events</a>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+
+<div class="header">
+    <h2>Mess Menu Management</h2>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<form id="messForm">
+
+    <select id="day" required>
+        <option value="">Select Day</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+        <option>Sunday</option>
+    </select>
+
+    <input type="text" id="breakfast" placeholder="Breakfast" required>
+    <input type="text" id="lunch" placeholder="Lunch" required>
+    <input type="text" id="dinner" placeholder="Dinner" required>
+
+    <button type="submit">Add Menu</button>
+
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Day</th>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Dinner</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="messTableBody"></tbody>
+</table>
+
+</div>
+
+<script src="mess.js"></script>
+
+<script>
+function logout(){
+    localStorage.removeItem("currentUser");
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

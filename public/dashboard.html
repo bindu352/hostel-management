@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard - HostelHub</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b,#312e81);
+    color:white;
+    display:flex;
+}
+
+/* Sidebar */
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    padding:30px 20px;
+    position:fixed;
+}
+
+.sidebar h2{
+    color:#38bdf8;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#38bdf8;
+}
+
+/* Main Content */
+.main{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    padding:30px;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.logout{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* Welcome Box */
+.welcome{
+    background:rgba(255,255,255,0.08);
+    padding:35px;
+    border-radius:20px;
+    margin-bottom:30px;
+}
+
+.welcome h1{
+    font-size:38px;
+}
+
+.welcome p{
+    margin-top:10px;
+    color:#d1d5db;
+}
+
+/* Stats */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.stat-card{
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.stat-card h2{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+/* Dashboard Cards */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+.card-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#d1d5db;
+}
+
+@media(max-width:900px){
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>🏠 HostelHub</h2>
+
+    <a href="#">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="rooms.html">Rooms</a>
+    <a href="allocation.html">Allocation</a>
+    <a href="fees.html">Fees</a>
+    <a href="mess.html">Mess</a>
+    <a href="complaints.html">Complaints</a>
+    <a href="events.html">Events</a>
+</div>
+
+<div class="main">
+
+<div class="navbar">
+    <h2>Dashboard</h2>
+    <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<div class="welcome">
+    <h1 id="welcomeText">Welcome!</h1>
+    <p>Manage your hostel activities from one smart dashboard.</p>
+</div>
+
+<div class="stats">
+    <div class="stat-card">
+        <h2>420</h2>
+        <p>Total Students</p>
+    </div>
+    <div class="stat-card">
+        <h2>150</h2>
+        <p>Total Rooms</p>
+    </div>
+    <div class="stat-card">
+        <h2>18</h2>
+        <p>Pending Complaints</p>
+    </div>
+    <div class="stat-card">
+        <h2>92%</h2>
+        <p>Fee Collection</p>
+    </div>
+</div>
+
+<div class="grid">
+
+<div class="card" onclick="window.location.href='room-details.html'">
+    <div class="card-icon">🏠</div>
+    <h3>Room Details</h3>
+    <p>Check room details and roommates</p>
+</div>
+
+<div class="card" onclick="window.location.href='fees.html'">
+    <div class="card-icon">💰</div>
+    <h3>Fee Management</h3>
+    <p>Manage payments and fees</p>
+</div>
+
+<div class="card" onclick="window.location.href='mess.html'">
+    <div class="card-icon">🍽️</div>
+    <h3>Mess Menu</h3>
+    <p>Daily menu and attendance</p>
+</div>
+
+<div class="card" onclick="window.location.href='complaints.html'">
+    <div class="card-icon">📝</div>
+    <h3>Complaints</h3>
+    <p>Track and resolve complaints</p>
+</div>
+
+<div class="card" onclick="window.location.href='students.html'">
+    <div class="card-icon">👨‍🎓</div>
+    <h3>Students</h3>
+    <p>Manage student records</p>
+</div>
+
+<div class="card" onclick="window.location.href='rooms.html'">
+    <div class="card-icon">🛏️</div>
+    <h3>Rooms</h3>
+    <p>Manage hostel rooms</p>
+</div>
+
+<div class="card" onclick="window.location.href='allocation.html'">
+    <div class="card-icon">📌</div>
+    <h3>Allocation</h3>
+    <p>Allocate and vacate rooms</p>
+</div>
+
+<div class="card" onclick="window.location.href='events.html'">
+    <div class="card-icon">📅</div>
+    <h3>Events</h3>
+    <p>Manage hostel events</p>
+</div>
+
+</div>
+</div>
+
+<script>
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if(!currentUser){
+    window.location.href = "login.html";
+}
+
+document.getElementById("welcomeText").innerText =
+"Welcome, " + currentUser.name + "!";
+
+function logout(){
+    localStorage.removeItem("currentUser");
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

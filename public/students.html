@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family: Arial;
+            background: #f4f4f4;
+            display:flex;
+        }
+
+        /* Sidebar */
+        .sidebar{
+            width:260px;
+            height:100vh;
+            background:#1e293b;
+            padding:30px 20px;
+            position:fixed;
+            left:0;
+            top:0;
+        }
+
+        .sidebar h2{
+            color:#38bdf8;
+            margin-bottom:40px;
+            text-align:center;
+        }
+
+        .sidebar a{
+            display:block;
+            color:white;
+            text-decoration:none;
+            padding:15px;
+            margin-bottom:12px;
+            border-radius:12px;
+        }
+
+        .sidebar a:hover{
+            background:#38bdf8;
+        }
+
+        /* Main Content */
+        .main-content{
+            margin-left:260px;
+            width:100%;
+            padding:20px;
+        }
+
+        .header{
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2{
+            margin: 0;
+        }
+
+        form{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button{
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logout-btn{
+            position:absolute;
+            right:0;
+            top:0;
+            width:120px;
+            padding:12px;
+            background:#ef4444;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td{
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th{
+            background: #2563eb;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>🏠 HostelHub</h2>
+
+        <a href="dashboard.html">Dashboard</a>
+        <a href="students.html">Students</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="allocation.html">Allocation</a>
+        <a href="fees.html">Fees</a>
+        <a href="mess.html">Mess</a>
+        <a href="complaints.html">Complaints</a>
+        <a href="events.html">Events</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div class="header">
+            <h2>Student Management</h2>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <form id="studentForm">
+            <input type="text" id="name" placeholder="Student Name" required>
+            <input type="text" id="roomNo" placeholder="Room Number" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <button type="submit">Add Student</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Room Number</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody"></tbody>
+        </table>
+
+    </div>
+
+    <script>
+        const studentForm = document.getElementById("studentForm");
+        const studentTableBody = document.getElementById("studentTableBody");
+
+        studentForm.addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const studentData = {
+                name: document.getElementById("name").value,
+                roomNo: document.getElementById("roomNo").value,
+                email: document.getElementById("email").value
+            };
+
+            try {
+                await fetch("http://127.0.0.1:3000/students", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(studentData)
+                });
+
+                studentForm.reset();
+                loadStudents();
+
+            } catch (error) {
+                console.log(error);
+            }
+        });
+
+        async function loadStudents() {
+            try {
+                const response = await fetch("http://127.0.0.1:3000/students");
+                const students = await response.json();
+
+                studentTableBody.innerHTML = "";
+
+                students.forEach(student => {
+                    studentTableBody.innerHTML += `
+                        <tr>
+                            <td>${student.name}</td>
+                            <td>${student.roomNo || student.rollno}</td>
+                            <td>${student.email}</td>
+                        </tr>
+                    `;
+                });
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        function logout(){
+            localStorage.removeItem("currentUser");
+            window.location.href = "login.html";
+        }
+
+        loadStudents();
+    </script>
+
+</body>
+</html>
